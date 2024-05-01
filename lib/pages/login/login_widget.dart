@@ -94,7 +94,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primaryText,
                                         fontSize: 50.0,
                                         letterSpacing: 0.0,
                                       ),
@@ -116,7 +116,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           .override(
                                             fontFamily: 'Outfit',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                                .primaryText,
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -323,7 +323,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           }
 
                                           context.pushNamedAuth(
-                                              'HomePage', context.mounted);
+                                              'dashboard', context.mounted);
                                         },
                                         text: 'Sign In',
                                         options: FFButtonOptions(

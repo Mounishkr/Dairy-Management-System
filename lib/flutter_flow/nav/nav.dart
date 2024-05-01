@@ -73,13 +73,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const LoginWidget(),
+          appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomePageWidget() : const LoginWidget(),
+              appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -90,6 +90,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'login',
           path: '/login',
           builder: (context, params) => const LoginWidget(),
+        ),
+        FFRoute(
+          name: 'dashboard',
+          path: '/dashboard',
+          builder: (context, params) => const DashboardWidget(),
+        ),
+        FFRoute(
+          name: 'AddProductPageCopy',
+          path: '/addProductPage',
+          builder: (context, params) => const AddProductPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'Inventory',
+          path: '/inventory',
+          builder: (context, params) => const InventoryWidget(),
+        ),
+        FFRoute(
+          name: 'Employee',
+          path: '/Employee',
+          builder: (context, params) => const EmployeeWidget(),
+        ),
+        FFRoute(
+          name: 'customerDetails',
+          path: '/CustomerDetails',
+          builder: (context, params) => const CustomerDetailsWidget(),
+        ),
+        FFRoute(
+          name: 'company',
+          path: '/company',
+          builder: (context, params) => const CompanyWidget(),
+        ),
+        FFRoute(
+          name: 'feedback',
+          path: '/feedback',
+          builder: (context, params) => const FeedbackWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
