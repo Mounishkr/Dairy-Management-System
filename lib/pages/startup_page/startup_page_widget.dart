@@ -80,12 +80,21 @@ class _StartupPageWidgetState extends State<StartupPageWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                         ),
-                        child: Lottie.asset(
-                          'assets/lottie_animations/Animation_-_1714690824769.json',
-                          width: 500.0,
-                          height: 500.0,
-                          fit: BoxFit.cover,
-                          animate: true,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('AdminLogin');
+                          },
+                          child: Lottie.asset(
+                            'assets/lottie_animations/Animation_-_1714690824769.json',
+                            width: 500.0,
+                            height: 500.0,
+                            fit: BoxFit.cover,
+                            animate: true,
+                          ),
                         ),
                       ),
                       Padding(
@@ -115,12 +124,21 @@ class _StartupPageWidgetState extends State<StartupPageWidget> {
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                         ),
-                        child: Lottie.asset(
-                          'assets/lottie_animations/Animation_-_1714691425836.json',
-                          width: 500.0,
-                          height: 500.0,
-                          fit: BoxFit.cover,
-                          animate: true,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('CustomerLogin');
+                          },
+                          child: Lottie.asset(
+                            'assets/lottie_animations/Animation_-_1714691425836.json',
+                            width: 500.0,
+                            height: 500.0,
+                            fit: BoxFit.cover,
+                            animate: true,
+                          ),
                         ),
                       ),
                       Padding(

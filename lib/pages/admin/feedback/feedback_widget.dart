@@ -74,420 +74,439 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 300.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: const [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                          spreadRadius: 4.0,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(24.0),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: Text(
-                              'Feedback Id',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 30.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.underline,
-                                  ),
+          child: Align(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            spreadRadius: 4.0,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(24.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: Text(
+                                'Feedback Id',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 30.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 45.0, 0.0, 0.0),
-                            child: FutureBuilder<List<TblfeedbackRow>>(
-                              future: TblfeedbackTable().queryRows(
-                                queryFn: (q) => q,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 45.0, 0.0, 0.0),
+                              child: FutureBuilder<List<TblfeedbackRow>>(
+                                future: TblfeedbackTable().queryRows(
+                                  queryFn: (q) => q,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<TblfeedbackRow>
-                                    listViewTblfeedbackRowList = snapshot.data!;
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewTblfeedbackRowList.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 10.0),
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewTblfeedbackRow =
-                                        listViewTblfeedbackRowList[
-                                            listViewIndex];
-                                    return Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        listViewTblfeedbackRow.feedbackID
-                                            .toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 30.0,
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
                                     );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 300.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: const [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                          spreadRadius: 4.0,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(24.0),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: Text(
-                              'Customer Id',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 30.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 45.0, 0.0, 0.0),
-                            child: FutureBuilder<List<TblfeedbackRow>>(
-                              future: TblfeedbackTable().queryRows(
-                                queryFn: (q) => q,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                                  }
+                                  List<TblfeedbackRow>
+                                      listViewTblfeedbackRowList =
+                                      snapshot.data!;
+                                  return ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        listViewTblfeedbackRowList.length,
+                                    separatorBuilder: (_, __) =>
+                                        const SizedBox(height: 10.0),
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewTblfeedbackRow =
+                                          listViewTblfeedbackRowList[
+                                              listViewIndex];
+                                      return Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          listViewTblfeedbackRow.feedbackID
+                                              .toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   );
-                                }
-                                List<TblfeedbackRow>
-                                    listViewTblfeedbackRowList = snapshot.data!;
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewTblfeedbackRowList.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 10.0),
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewTblfeedbackRow =
-                                        listViewTblfeedbackRowList[
-                                            listViewIndex];
-                                    return Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          listViewTblfeedbackRow.customerID
-                                              ?.toString(),
-                                          'customer id',
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 300.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            spreadRadius: 4.0,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(24.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: Text(
+                                'Customer Id',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 30.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 45.0, 0.0, 0.0),
+                              child: FutureBuilder<List<TblfeedbackRow>>(
+                                future: TblfeedbackTable().queryRows(
+                                  queryFn: (q) => q,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 30.0,
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
                                     );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 300.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: const [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                          spreadRadius: 4.0,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(24.0),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: Text(
-                              'Ratings',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 30.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 45.0, 0.0, 0.0),
-                            child: FutureBuilder<List<TblfeedbackRow>>(
-                              future: TblfeedbackTable().queryRows(
-                                queryFn: (q) => q,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                                  }
+                                  List<TblfeedbackRow>
+                                      listViewTblfeedbackRowList =
+                                      snapshot.data!;
+                                  return ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        listViewTblfeedbackRowList.length,
+                                    separatorBuilder: (_, __) =>
+                                        const SizedBox(height: 10.0),
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewTblfeedbackRow =
+                                          listViewTblfeedbackRowList[
+                                              listViewIndex];
+                                      return Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            listViewTblfeedbackRow.customerID
+                                                ?.toString(),
+                                            'customer id',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   );
-                                }
-                                List<TblfeedbackRow>
-                                    listViewTblfeedbackRowList = snapshot.data!;
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewTblfeedbackRowList.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 10.0),
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewTblfeedbackRow =
-                                        listViewTblfeedbackRowList[
-                                            listViewIndex];
-                                    return Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          listViewTblfeedbackRow.rating
-                                              ?.toString(),
-                                          'customer id',
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 300.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            spreadRadius: 4.0,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(24.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: Text(
+                                'Ratings',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 30.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 45.0, 0.0, 0.0),
+                              child: FutureBuilder<List<TblfeedbackRow>>(
+                                future: TblfeedbackTable().queryRows(
+                                  queryFn: (q) => q,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 30.0,
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
                                     );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 300.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: const [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                          spreadRadius: 4.0,
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(24.0),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: Text(
-                              'Phone Number',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 30.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 45.0, 0.0, 0.0),
-                            child: FutureBuilder<List<TblfeedbackRow>>(
-                              future: TblfeedbackTable().queryRows(
-                                queryFn: (q) => q,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                                  }
+                                  List<TblfeedbackRow>
+                                      listViewTblfeedbackRowList =
+                                      snapshot.data!;
+                                  return ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        listViewTblfeedbackRowList.length,
+                                    separatorBuilder: (_, __) =>
+                                        const SizedBox(height: 10.0),
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewTblfeedbackRow =
+                                          listViewTblfeedbackRowList[
+                                              listViewIndex];
+                                      return Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            listViewTblfeedbackRow.rating
+                                                ?.toString(),
+                                            'customer id',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   );
-                                }
-                                List<TblfeedbackRow>
-                                    listViewTblfeedbackRowList = snapshot.data!;
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewTblfeedbackRowList.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 10.0),
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewTblfeedbackRow =
-                                        listViewTblfeedbackRowList[
-                                            listViewIndex];
-                                    return Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          listViewTblfeedbackRow.phoneNumber
-                                              ?.toString(),
-                                          'customer id',
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 300.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            spreadRadius: 4.0,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(24.0),
+                        shape: BoxShape.rectangle,
+                      ),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: Text(
+                                'Phone Number',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 30.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 45.0, 0.0, 0.0),
+                              child: FutureBuilder<List<TblfeedbackRow>>(
+                                future: TblfeedbackTable().queryRows(
+                                  queryFn: (q) => q,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 30.0,
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
                                     );
-                                  },
-                                );
-                              },
+                                  }
+                                  List<TblfeedbackRow>
+                                      listViewTblfeedbackRowList =
+                                      snapshot.data!;
+                                  return ListView.separated(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        listViewTblfeedbackRowList.length,
+                                    separatorBuilder: (_, __) =>
+                                        const SizedBox(height: 10.0),
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewTblfeedbackRow =
+                                          listViewTblfeedbackRowList[
+                                              listViewIndex];
+                                      return Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            listViewTblfeedbackRow.phoneNumber
+                                                ?.toString(),
+                                            'customer id',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 30.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ].divide(const SizedBox(width: 50.0)),
+                  ].divide(const SizedBox(width: 50.0)),
+                ),
               ),
             ),
           ),
