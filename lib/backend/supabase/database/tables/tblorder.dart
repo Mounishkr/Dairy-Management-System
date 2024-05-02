@@ -37,4 +37,7 @@ class TblorderRow extends SupabaseDataRow {
 
   String? get date => getField<String>('Date');
   set date(String? value) => setField<String>('Date', value);
+
+  String? get productname => getField<String>('Productname');
+  set productname(String? value) => setField<String>('Productname', value);
 }

@@ -73,13 +73,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
+          appStateNotifier.loggedIn ? const DashboardWidget() : const StartupPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const DashboardWidget() : const LoginWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? const DashboardWidget()
+              : const StartupPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -87,9 +88,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
-          name: 'login',
-          path: '/login',
-          builder: (context, params) => const LoginWidget(),
+          name: 'AdminLogin',
+          path: '/adminLogin',
+          builder: (context, params) => const AdminLoginWidget(),
         ),
         FFRoute(
           name: 'dashboard',
@@ -125,6 +126,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'feedback',
           path: '/feedback',
           builder: (context, params) => const FeedbackWidget(),
+        ),
+        FFRoute(
+          name: 'StartupPage',
+          path: '/startupPage',
+          builder: (context, params) => const StartupPageWidget(),
+        ),
+        FFRoute(
+          name: 'CustomerLogin',
+          path: '/customerLogin',
+          builder: (context, params) => const CustomerLoginWidget(),
+        ),
+        FFRoute(
+          name: 'Customerdashboard',
+          path: '/customerdashboard',
+          builder: (context, params) => const CustomerdashboardWidget(),
+        ),
+        FFRoute(
+          name: 'AddCustomerDetails',
+          path: '/addCustomerDetails',
+          builder: (context, params) => const AddCustomerDetailsWidget(),
+        ),
+        FFRoute(
+          name: 'CustomerProductpage',
+          path: '/customerProductpage',
+          builder: (context, params) => const CustomerProductpageWidget(),
+        ),
+        FFRoute(
+          name: 'Placeorder',
+          path: '/placeorder',
+          builder: (context, params) => const PlaceorderWidget(),
+        ),
+        FFRoute(
+          name: 'CartPage',
+          path: '/cartPage',
+          builder: (context, params) => const CartPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -293,7 +329,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/login';
+            return '/startupPage';
           }
           return null;
         },

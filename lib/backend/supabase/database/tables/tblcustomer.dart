@@ -28,4 +28,7 @@ class TblcustomerRow extends SupabaseDataRow {
 
   String? get customerType => getField<String>('CustomerType');
   set customerType(String? value) => setField<String>('CustomerType', value);
+
+  String? get customerEmail => getField<String>('CustomerEmail');
+  set customerEmail(String? value) => setField<String>('CustomerEmail', value);
 }
