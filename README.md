@@ -6,6 +6,8 @@
 
 The Dairy Management System is a software application designed to streamline and automate the management of dairy farms or dairy-related businesses. It provides functionalities to manage cows, milk production, employees, customers, and more.
 
+You can direct test it "https://shorturl.at/lqQ38"
+
 ## Features
 
 - **Cow Management**: Keep track of individual cows, their health, and productivity.
@@ -45,15 +47,3 @@ The Dairy Management System is a software application designed to streamline and
 - **Admin Dashboard**: Access the admin dashboard by logging in as an administrator.
 - **Employee Dashboard**: Employees can log in to view tasks, update information, etc.
 - **Customer Portal**: Customers can place orders, view their history, and provide feedback.
-
-## Contributing
-
-Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
----
-
-Feel free to customize the content as needed, adding more details, instructions, or any specific guidelines for contributors.
